@@ -15,7 +15,7 @@
 let numeriCasualiComputer = [];
 let numeriUtenteInseriti = [];
 
-for (let i = 0; numeriCasualiComputer.length < 16; i++) {
+while (numeriCasualiComputer.length < 16) {
     let numeroCasuale = getRandomInt(100);
 
     if ( contains(numeriCasualiComputer, numeroCasuale) !== true ){
@@ -28,19 +28,34 @@ for (let i = 0; numeriCasualiComputer.length < 16; i++) {
 console.log(numeriCasualiComputer.sort());
 
 
-let numeroUtenteInserito = prompt("Inserisci un altro numero");
+let numeroUtente;
 
-if ( contains(numeriCasualiComputer, numeroUtenteInserito) == true ){
+while (contains(numeriCasualiComputer, numeroUtente) !== true && numeriUtenteInseriti.length < 84 ) {
+    numeroUtente = parseInt( prompt("Inserisci un numero"));
 
-    console.log("Hai perso")
+    if ( contains(numeriUtenteInseriti, numeroUtente) === true ){
+
+        alert("Attenzione numero gia inserito! Inserisci un nuovo numero")
+
+    } else if (isNaN(numeriUtenteInseriti)) {
+
+        alert("Attenzione inserisci un valore numerico")
+
+    } else {
+        numeriUtenteInseriti.push(numeroUtente);
+    }
 
 }
 
+console.log(numeriUtenteInseriti);
+console.log(numeriUtenteInseriti.length);
 
 
-
-
-
+if (numeriUtenteInseriti.length >= 84) {
+    console.log("Congratulazioni Hai VINTO !");
+} else {
+    console.log("Hai preso la BOMBA, mi dispaice, il tuo punteggio è stato:" + numeriUtenteInseriti.length);
+}
 
 
 
@@ -59,9 +74,3 @@ function contains(a, obj) {
     return false;
 }
 
-// // Funzione che chiede il numero per TOT volte
-// function richiestaNumero (number) {
-//     for (let y = 0; y < number ; y++) {
-//         let numeroUtente = prompt("Inserisci un altro numero") ; 
-//     }
-// }
