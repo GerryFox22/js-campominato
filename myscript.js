@@ -15,47 +15,101 @@
 let numeriCasualiComputer = [];
 let numeriUtenteInseriti = [];
 
-while (numeriCasualiComputer.length < 16) {
-    let numeroCasuale = getRandomInt(100);
-
-    if ( contains(numeriCasualiComputer, numeroCasuale) !== true ){
-
-        numeriCasualiComputer.push(numeroCasuale);
-
-    }
-}
-
-console.log(numeriCasualiComputer.sort());
 
 
-let numeroUtente;
+let numeroMassimo;
+let bombe;
 
-while (contains(numeriCasualiComputer, numeroUtente) !== true && numeriUtenteInseriti.length < 84 ) {
-    numeroUtente = parseInt( prompt("Inserisci un numero"));
 
-    if ( contains(numeriUtenteInseriti, numeroUtente) === true ){
 
-        alert("Attenzione numero gia inserito! Inserisci un nuovo numero")
+const difficoltà = ["facile", "medio", "difficile"];
 
-    } else if (isNaN(numeriUtenteInseriti)) {
+let difficoltàScelta = prompt("Inserisci livello difficoltà tra: facile, medio, difficile").trim().toLowerCase();
 
-        alert("Attenzione inserisci un valore numerico")
+console.log(difficoltàScelta.trim().toLowerCase())
+while (difficoltàScelta.length == 0 || !difficoltà.includes(difficoltàScelta) ) {
 
-    } else {
-        numeriUtenteInseriti.push(numeroUtente);
-    }
+    let difficoltàScelta = prompt("Hai inserito un livello di difficoltà inesistente, inserisci un livello difficoltà tra: facile, medio, difficile")
 
 }
 
-console.log(numeriUtenteInseriti);
-console.log(numeriUtenteInseriti.length);
+switch (difficoltàScelta) {
 
+    case "facile":
+        bombe = 2;
+        numeroMassimo = 10;
+        break;
+    
+    case "medio":
+        bombe = 3;
+        numeroMassimo = 10;
+        break;
 
-if (numeriUtenteInseriti.length >= 84) {
-    console.log("Congratulazioni Hai VINTO !");
-} else {
-    console.log("Hai preso la BOMBA, mi dispaice, il tuo punteggio è stato:" + numeriUtenteInseriti.length);
+    case "difficile":
+        bombe = 4;
+        numeroMassimo = 10;
+        break;
+    
+    default:
+        bombe = 2;
+        numeroMassimo = 10;
+        break;
+
 }
+let livello = numeroMassimo - bombe ;
+
+console.log(bombe)
+console.log(numeroMassimo)
+console.log(livello)
+
+// while (numeriCasualiComputer.length < bombe) {
+//     let numeroCasuale = getRandomInt(numeroMassimo);
+
+//     if ( contains(numeriCasualiComputer, numeroCasuale) !== true ){
+
+//         numeriCasualiComputer.push(numeroCasuale);
+
+//     }
+// }
+
+// console.log(numeriCasualiComputer.sort());
+
+// while ( numeriUtenteInseriti.length < livello ) {
+//     let numeroUtente = parseInt(prompt("Inserisci un numero"));
+
+//     while (numeroUtente < 1 || numeroUtente > numeroMassimo || isNaN(numeroUtente) 
+//         || ( numeriUtenteInseriti.includes(numeroUtente) == true)) {
+
+//             if ( ( numeriUtenteInseriti.includes(numeroUtente) == true) ) {
+//                 numeroUtente = parseInt(prompt( numeroUtente + "è gia stato inserito! Inserisci nuovamente un numero"));
+
+//             } else if ( isNaN(numeroUtente) ) {
+
+//                 numeroUtente = parseInt(prompt("Hai inserito un valore non numerico ! Inserisci nuovamente un numero"));
+
+//             } else if ( numeroUtente < 1 || numeroUtente > numeroMassimo ) {
+
+//                 numeroUtente = parseInt(prompt("Perfavore inserisci un numero compreso tra 1 e " + numeroMassimo +  "! Inserisci nuovamente un numero")); 
+
+//             } 
+            
+//         }
+
+//         if ( numeriCasualiComputer.includes(numeroUtente)) {
+//             alert ("Mi dispiace hai perso!! Il tuo punteggio finale è: " + numeriUtenteInseriti.length);
+//             numeriUtenteInseriti.length = livello ;
+//         } else {
+//             numeriUtenteInseriti.push(numeroUtente);
+//             if (numeriUtenteInseriti.length == livello){
+//                 alert("Complimenti, hai Vinto !!")
+//             }
+//         }
+// }
+
+
+
+// console.log(numeriUtenteInseriti);
+
 
 
 
